@@ -3,8 +3,10 @@ version: '2'
 services:
   taiga:
     build: .
-    ports:
-      - 80:80
+    expose:
+      - 80
+    #ports:
+      #- 80:80
       # - 443:443 # To enable SSL, uncomment this line
     depends_on:
       - postgres
@@ -22,6 +24,8 @@ services:
     environment:
       # Your hostname (REQUIRED)
       TAIGA_HOSTNAME: localhost
+      VIRTUAL_HOST: taiga.ryanwatts.me
+      VIRTUAL_PORT: 80
 
       # Database settings
       # To use an external database, simply update these and remove the postgres
